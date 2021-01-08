@@ -1,0 +1,41 @@
+
+
+
+
+<div class=container>
+    <h2> Busca un Heroe</h2>
+    <input type="text" [(ngModel)]="id" (keyup.enter)="getHeroe()" />
+    
+    <div *ngIf="nombre && nombre.puedeVolar==true; else elseBlock">
+        <img src="{{nombre.avatarURL}}" width="200" />
+        <h2>{{heroes.nombre}}</h2>
+    </div>
+    <ng-template #elseBlock>
+        <h2>¡Ese superheroe no vuela!</h2>
+    </ng-template>
+
+    <br/>
+    <br/>
+    <br/>
+    <hr>
+
+	<h2>Superhéroes que pueden volar</h2>
+    
+    <ul *ngFor="let heroe of heroes">
+        
+
+		<li *ngIf="heroe.puedeVolar==true" class="heroe">
+            <div class="img" *ngIf="heroe.avatarURL">
+                <img src="{{heroe.avatarURL}}" />
+            </div>
+            <div class="img" *ngIf="!heroe.avatarURL">
+                <h2>No hay foto para mostrar</h2>
+            </div>
+            <div class="data">
+                <h3>{{heroe.nombre}}</h3>
+                <p>{{heroe.nombreReal}}</p>
+            </div> 
+		</li>
+    </ul>
+    
+</div>
